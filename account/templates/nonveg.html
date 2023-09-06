@@ -1,0 +1,42 @@
+{%extends 'base.html'%}
+{%block content%}
+<!DOCTYPE html>
+
+  
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Document</title>
+  </head>
+
+
+  <body>
+    <br><br><br><br>
+  
+
+      <div class="row text-center">
+
+          {% for i in nonveg %}
+          <div class="col-4 mt-6">
+            <br><br>
+              <div style="width: 400px;background-color:rgb(238, 154, 58);">
+                  <img src="{{i.image.url}}" alt="hi" style="width: 400px;height: 300px">
+                  <h2> {{i.item}}, <br>price : {{i.price}} </h2>
+                 
+              </div>
+              <button class="btn" style="background-color: rgb(113, 153, 48);"><a href="{% url 'addcart' i.id %}">Add to cart</a></button>
+           
+          </div>
+        
+         
+    {% endfor %}
+       
+  
+       </div>
+  
+  </body>
+  </html>
+  
+  {%endblock%}
+  

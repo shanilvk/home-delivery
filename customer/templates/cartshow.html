@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{%block content%}
+<style>
+
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+      }
+      
+      .grid-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* Display 4 items in a row */
+        grid-gap: 20px;
+      }
+      
+   
+
+</style>
+
+<br><br><br><br>
+
+<div class="grid-container" id="itemGrid">
+
+    
+    <!-- Your Django template code here -->
+    {% for i in cartitem.item %}
+    <div class="item" style="margin-left: 20px;">
+      <div style="width: 400px; background-color: rgb(238, 154, 58);">
+        <img src="{{ i.foods.image.url }}" alt="hi" style="width: 400px; height: 300px">
+        <h2>{{ i.foods.item }}, <br>price: {{ i.foods.price }}</h2>
+      </div>
+      <button><a href="{% url 'delcart' id=i.id %}">delete</a></button>
+      <button><a href="{% url 'ckout' cid=i.id%}">order now</a></button>
+    </div>
+
+    {% endfor %}
+    
+  </div>
+
+ 
+
+
+
+{%endblock%}
